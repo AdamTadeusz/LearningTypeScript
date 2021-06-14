@@ -1,15 +1,24 @@
-function add(n1: number, n2: number, showResult: boolean, resultPhrase: string){
-    const result = n1+n2;
-    if (showResult){
-        console.log(resultPhrase+result);
-    } else {
-        return result;
-    }
+const person: {
+    name: string;
+    age: number;
+    hobbies: string[];
+    role: [number, string];
+} = {
+    name: 'Adam',
+    age: 21,
+    hobbies: ['sports', 'cooking'],
+    role: [2, 'author']
+};
+
+person.role.push('admin'); // Typescript does not see a problem here and will push a third value to a two value tuple
+person.role = [2, 'author', 'admin'];   // Here Typescript sees the problem
+
+let favouriteActivities: string[];
+favouriteActivities = ['Sports'];
+
+console.log(person.name);
+console.log(person.role);
+
+for (const hobby of person.hobbies) {
+    console.log(hobby.toUpperCase());
 }
-
-const number1 = 5;
-const number2 = 2.8;
-const printResult = true;
-const resultPhrase = 'Result is: ';
-
-const result = add(number1, number2, printResult, resultPhrase)
